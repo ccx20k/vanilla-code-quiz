@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/styles.css" />
+
+    <title>JavaScript Quiz</title>
+</head>
+
+<body>
+    <div id="quiz-header" class="bg-light p-2 d-none">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <p>Time left: <span id="timer">75</span> seconds.</p>
+                </div>
+                <div class="col-6">
+                    <button id="highscores" type="button" class="btn btn-outline-danger float-right">Highscores</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Welcome message -->
+        <div class="jumbotron bg-light text-dark mt-4" id="jumbotron">
+            <h1 class="display-4">Test your knowledge of JS</h1>
+            <p class="lead">
+                JavaScript is a language that can communicate with both the front end and the backend of applications.
+                Test your knowledge with this short quiz.
+            </p>
+            <hr class="my-4" />
+            <p>
+                You have 75 seconds to complete the quiz. Each correct question will get you 100 points. You get bonus
+                points if you finish quickly! Press the
+                "Start Quiz" button when you are ready.
+            </p>
+            <a class="btn btn-primary btn-lg" href="#" role="button" id="startQuiz">Start Quiz</a>
+        </div>
+
+        <!-- Questions section -->
+        <div id="questionsBox" class="d-none mt-4">
+            <h4 id="qNumber" class="text-uppercase pt-2">Question Number</h4>
+            <h2 id="questionTitle">Question Text</h2>
+            <ol id="answers">
+                <!-- List items go here -->
+            </ol>
+
+            <div class="alert alert-success d-none" role="alert">
+                Correct!
+            </div>
+            <div class="alert alert-danger d-none" role="alert">
+                Wrong!
+            </div>
+        </div>
+
+        <!-- End of quiz message -->
+        <div id="endOfQuiz" class="d-none mt-4">
+            <div class="alert alert-primary" role="alert">
+                <p>Thank you for playing!</p>
+                <h2>Your final score is: <span id="finalScore">0</span> points!</h2>
+            </div>
+            <div id="scoreBoard">
+                <h4>To add you score to the leaderboard, please enter your initials:</h4>
+                <div class="form-inline">
+                    <label for="playerInitials" class="ml-2">Initials: </label>
+                    <input type="text" class="form-control ml-2" id="playerInitials" placeholder="ABC" maxlength="3">
+                    <button type="button" class="btn btn-outline-primary ml-2" id="submitInitials">Submit</button> <span
+                        id="saved" class="ml-2 text-success d-none">Score added!</span>
+                </div>
+            </div>
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th scope="col">INITIALS</th>
+                        <th scope="col">SCORE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="storedInitials">AAA</td>
+                        <td id="storedScore">000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="assets/questions.js"></script>
+    <script src="assets/script.js"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
