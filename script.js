@@ -120,13 +120,20 @@ function dispScores() {
 };
 
 //button functionality
-
 submitCreds.addEventListener("click", function(event) {
     event.preventDefault();
+    //store the current score and the user initials 
+    var initials = document.querySelector("#playerInitials").value.toUpperCase();
+    //add the new score to the list 
+    var highScores = [
+        {
+            playerInitials: initials,
+            score: score,
+        }
+        storedInitials.innerText = highScores[0].playerInitials
+        storedScore.innerText = highScores[0].finalScore
+    ];
 
-    var initials = document.querySelector("#playerInitials");
-    localStorage.setItem("initials", initials.value);
-    localStorage.setItem("score", score);
 });
 
 
