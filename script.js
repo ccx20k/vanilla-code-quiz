@@ -55,7 +55,7 @@ function beginTimer() {
     timerInterval = setInterval(function () {
         secondsLeft--;
         timerEl.textContent = secondsLeft;
-        if (secondsLeft >= 0) {
+        if (secondsLeft <= 0) {
             clearInterval(timerInterval);
             dispScores();//shows the score card
         }
