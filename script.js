@@ -38,8 +38,8 @@ var questIndex = 0;
 var wrongAns = document.querySelector("#wrong");
 var rightAns = document.querySelector("#correct");
 var timerInterval;
-
-
+var score = 0;
+var submitCreds = document.querySelector('#submitCreds')
 
 //button event listener
 daButton.addEventListener("click", function () {
@@ -71,20 +71,19 @@ function renderQuestions() {
     //get the current question based on the index's
     var currentQuest = questions[questIndex];
     answers.innerHTML = "";
-
     //populate html 
-        //qNumber 
+    //qNumber 
     qNumer.textContent = questIndex + 1;
     questTitle.textContent = currentQuest.title;
-         //questionTitle
-        //answers
-        //make a loop that makes a li button for every choice in the object 
+    //questionTitle
+    //answers
+    //make a loop that makes a li button for every choice in the object 
     for (var i = 0; i < currentQuest.choices.length; i++) {
         var button = document.createElement('button')
-        button.setAttribute('type', "button" )
+        button.setAttribute('type', "button")
         button.setAttribute('class', "btn btn-primary btn-lg")
         button.textContent = currentQuest.choices[i];
-        button.addEventListener('click', function(event) {
+        button.addEventListener('click', function (event) {
             if (event.target.textContent === currentQuest.answer) {
                 rightAns.classList.remove('d-none');
                 setTimeout(() => {
@@ -104,7 +103,9 @@ function renderQuestions() {
                 questIndex++;
                 renderQuestions();
             }
-
+            if (event.target.textContent === currentQuest.answer) {
+                score += 100 + secondsLeft;
+            }
         })
         answers.appendChild(button);
     }
@@ -115,4 +116,18 @@ function renderQuestions() {
 function dispScores() {
     scoreCard.classList.remove("d-none");
     questionBox.classList.add("d-none");
+    console.log(score);
 };
+
+//button functionality
+
+submitCreds.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var initials = document.querySelector("#playerInitials");
+    localStorage.setItem("initials", initials.value);
+    localStorage.setItem("score", score);
+});
+
+
+
