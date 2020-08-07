@@ -10,6 +10,21 @@ var questions = [
         choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
         answer: "parentheses"
     },
+    {
+        title: "The condition in an if / else statement is enclosed within ____.",
+        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+        answer: "parentheses"
+    },
+    {
+        title: "The condition in an if / else statement is enclosed within ____.",
+        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+        answer: "parentheses"
+    },
+    {
+        title: "The condition in an if / else statement is enclosed within ____.",
+        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+        answer: "parentheses"
+    }
     ///etc.
 ];
 var timerEl = document.querySelector("#timer");
@@ -40,7 +55,7 @@ function beginTimer() {
     timerInterval = setInterval(function () {
         secondsLeft--;
         timerEl.textContent = secondsLeft;
-        if (secondsLeft === 0) {
+        if (secondsLeft >= 0) {
             clearInterval(timerInterval);
             dispScores();//shows the score card
         }
@@ -89,6 +104,7 @@ function renderQuestions() {
                 questIndex++;
                 renderQuestions();
             }
+
         })
         answers.appendChild(button);
     }
@@ -98,4 +114,5 @@ function renderQuestions() {
 //display score board
 function dispScores() {
     scoreCard.classList.remove("d-none");
+    questionBox.classList.add("d-none");
 };
