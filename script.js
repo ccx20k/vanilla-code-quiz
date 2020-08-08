@@ -40,6 +40,14 @@ var rightAns = document.querySelector("#correct");
 var timerInterval;
 var score = 0;
 var submitCreds = document.querySelector('#submitCreds')
+var player = document.querySelector('#playerInitials');
+var scoreStore = [
+    {
+        playerInitials: "",
+        score: score
+    }
+]
+
 
 //button event listener
 daButton.addEventListener("click", function () {
@@ -120,19 +128,23 @@ function dispScores() {
 };
 
 //button functionality
-submitCreds.addEventListener("click", function(event) {
+submitCreds.addEventListener("click", function (event) {
     event.preventDefault();
     //store the current score and the user initials 
-    var initials = document.querySelector("#playerInitials").value.toUpperCase();
-    //add the new score to the list 
-    var highScores = [
-        {
-            playerInitials: initials,
-            score: score,
+    var playerText = playerInitials.value.trim();
+    localStorage.setItem(scoreStore[0], JSON.stringify(playerText));
+
+        if (playerText.value === "") {
+            return;
         }
-        storedInitials.innerText = highScores[0].playerInitials
-        storedScore.innerText = highScores[0].finalScore
-    ];
+
+        //add the new initials to the array object
+        scoreStore.push(playerText);
+        playerInitials.value = "";
+
+        // renderScores();
+    
+   
 
 });
 
