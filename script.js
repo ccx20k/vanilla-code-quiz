@@ -40,13 +40,7 @@ var rightAns = document.querySelector("#correct");
 var timerInterval;
 var score = 0;
 var submitCreds = document.querySelector('#submitCreds')
-var player = document.querySelector('#playerInitials');
-var scoreStore = [
-    {
-        playerInitials: "",
-        score: score
-    }
-]
+var scoreStore = [];
 
 
 //button event listener
@@ -58,7 +52,7 @@ daButton.addEventListener("click", function () {
     theWhopper.classList.add("d-none");//takes away the jumbotron
 });
 
-//make the timer 
+//start the timer with functionality
 function beginTimer() {
     timerInterval = setInterval(function () {
         secondsLeft--;
@@ -112,7 +106,7 @@ function renderQuestions() {
                 renderQuestions();
             }
             if (event.target.textContent === currentQuest.answer) {
-                score += 100 + secondsLeft;
+                score += 100;
             }
         })
         answers.appendChild(button);
@@ -127,24 +121,40 @@ function dispScores() {
     console.log(score);
 };
 
-//button functionality
+//submit button functionality
 submitCreds.addEventListener("click", function (event) {
     event.preventDefault();
+    console.log("score :::", score);
     //store the current score and the user initials 
-    var playerText = playerInitials.value.trim();
-    localStorage.setItem(scoreStore[0], JSON.stringify(playerText));
-
+    var playerInits = document.querySelector('#playerInitials');
+    var playerText = playerInits.value.trim();
+    console.log("playerText ::: ", playerText);
+    var highscoreObject = {
+        score: score,
+        initials: playerText
+    }
+    scoreStore.push(highscoreObject);
+    localStorage.setItem('initialStore', JSON.stringify(scoreStore));    
+        //if the player does not enter their initials return early
         if (playerText.value === "") {
             return;
         }
+    //add new th list items to the score card
+    for (var i = 0; i < scoreStore.length; i++) {
+        var scoreIndex = scoreStore[i];
+    
+        var newRow = document.querySelector('tbody');
+        var newData = newRow.childeren.createElement('th');
+        var renderNewData = appendChild(newData);        
+        renderNewData.children[0].textContent = scoreIndex;
 
-        //add the new initials to the array object
-        scoreStore.push(playerText);
-        playerInitials.value = "";
+      } 
+      
+      playerInitials.value = "";
 
         // renderScores();
+
     
-   
 
 });
 
