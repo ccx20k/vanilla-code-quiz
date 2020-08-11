@@ -124,10 +124,19 @@ function dispScores() {
 //submit button functionality
 submitCreds.addEventListener("click", function (event) {
     event.preventDefault();
-    console.log("score :::", score);
-    //store the current score and the user initials 
+    //if the player does not enter their initials return early
     var playerInits = document.querySelector('#playerInitials');
     var playerText = playerInits.value.trim();
+        if (playerText.value === "") {
+            return;
+        }
+    console.log("score :::", score);
+    //store the current score and the user initials 
+    var table = document.querySelector('#scoreTable');
+    while (table.firstChild) {
+        table.removeChild(table.firstChild);
+    }
+
     console.log("playerText ::: ", playerText);
     var highscoreObject = {
         score: score,
@@ -135,18 +144,22 @@ submitCreds.addEventListener("click", function (event) {
     }
     scoreStore.push(highscoreObject);
     localStorage.setItem('initialStore', JSON.stringify(scoreStore));    
-        //if the player does not enter their initials return early
-        if (playerText.value === "") {
-            return;
-        }
+        
     //add new th list items to the score card
     for (var i = 0; i < scoreStore.length; i++) {
         var scoreIndex = scoreStore[i];
     
-        var newRow = document.querySelector('tbody');
-        var newData = newRow.childeren.createElement('th');
-        var renderNewData = appendChild(newData);        
-        renderNewData.children[0].textContent = scoreIndex;
+        // var newRow = document.querySelector('tbody');
+        // var newData = tbody.createElement('th');
+        // var renderNewData = appendChild(newData);        
+        // renderNewData.children[0].textContent = scoreIndex;
+        
+        var tr = table.insertRow(i);
+        var tdInitials = tr.insertCell(0);
+        tdInitials.textContent = scoreIndex.initials;
+        var tdScore = tr.insertCell(1);
+        tdScore.textContent = scoreIndex.score;
+
 
       } 
       
