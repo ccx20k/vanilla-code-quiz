@@ -25,3 +25,12 @@ The application uses *Bootstrap 4,* javascript, and css.
 6. After the quiz is completed, the user can see their final score, and they have the option to add their score and initials to the highscores.
 
 ## User interface
+### Welcome Box 
+![quiz welcome box](assets/UI.PNG)
+### Questions Rendered 
+![questions rendered](assets/QB.PNG)
+### Score Board 
+![score board](assets/SB.PNG)
+
+## Deployed Application Link 
+IF you would like to try the quiz you may do so [here](https://ccx20k.github.io/vanilla-code-quiz/.)
