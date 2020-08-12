@@ -26,11 +26,11 @@ The application uses *Bootstrap 4,* javascript, and css.
 
 ## User interface
 ### Welcome Box 
-![quiz welcome box](assets/UI.PNG)
+![quiz welcome box](assets/UI.png)
 ### Questions Rendered 
-![questions rendered](assets/QB.PNG)
+![questions rendered](assets/QB.png)
 ### Score Board 
-![score board](assets/SB.PNG)
+![score board](assets/SB.png)
 
 ## Deployed Application Link 
 IF you would like to try the quiz you may do so [here](https://ccx20k.github.io/vanilla-code-quiz/.)
