@@ -11,24 +11,24 @@ var questions = [
         answer: "parentheses"
     },
     {
-        title: "The condition in an if / else statement is enclosed within ____.",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        answer: "parentheses"
+        title: "The name of an argument in a function is _______.",
+        choices: ["arbitrary", "a taco", "syntactic sugar", "a method"],
+        answer: "arbitrary"
     },
     {
-        title: "The condition in an if / else statement is enclosed within ____.",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        answer: "parentheses"
+        title: "What is JS coding, WITHOUT the use of a library called",
+        choices: ["vanilla scripting", "java scripting", "para-scripting", "scripting"],
+        answer: "vanilla scripting"
     },
     {
-        title: "The condition in an if / else statement is enclosed within ____.",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        answer: "parentheses"
+        title: "What is the average quantity of keyboards broken, per student developer, while learning JS?",
+        choices: ["2", "3", "4", "none, this has been great!"],
+        answer: "4"
     }
     ///etc.
 ];
 var timerEl = document.querySelector("#timer");
-var secondsLeft = 10;
+var secondsLeft = 5 * 15;
 var scoreCard = document.querySelector("#endOfQuiz");
 var questionBox = document.querySelector("#questionBox");
 var daButton = document.querySelector("#startQuiz");
@@ -39,7 +39,7 @@ var wrongAns = document.querySelector("#wrong");
 var rightAns = document.querySelector("#correct");
 var timerInterval;
 var score = 0;
-var submitCreds = document.querySelector('#submitCreds')
+var submitCreds = document.querySelector('#submitCreds');
 var scoreStore = [];
 
 
@@ -83,7 +83,7 @@ function renderQuestions() {
     for (var i = 0; i < currentQuest.choices.length; i++) {
         var button = document.createElement('button')
         button.setAttribute('type', "button")
-        button.setAttribute('class', "btn btn-primary btn-lg")
+        button.setAttribute('class', "btn btn-primary btn-lg btn-block")
         button.textContent = currentQuest.choices[i];
         button.addEventListener('click', function (event) {
             if (event.target.textContent === currentQuest.answer) {
@@ -118,6 +118,8 @@ function renderQuestions() {
 function dispScores() {
     scoreCard.classList.remove("d-none");
     questionBox.classList.add("d-none");
+    var finalScore = document.querySelector("#finalScore");
+    finalScore.textContent = JSON.stringify(score);
     console.log(score);
 };
 
@@ -125,51 +127,40 @@ function dispScores() {
 submitCreds.addEventListener("click", function (event) {
     event.preventDefault();
     //if the player does not enter their initials return early
+
+
     var playerInits = document.querySelector('#playerInitials');
     var playerText = playerInits.value.trim();
-        if (playerText.value === "") {
-            return;
-        }
+    if (playerText.value === "") {
+        return;
+    }
     console.log("score :::", score);
     //store the current score and the user initials 
     var table = document.querySelector('#scoreTable');
     while (table.firstChild) {
         table.removeChild(table.firstChild);
     }
-
     console.log("playerText ::: ", playerText);
     var highscoreObject = {
         score: score,
         initials: playerText
     }
     scoreStore.push(highscoreObject);
-    localStorage.setItem('initialStore', JSON.stringify(scoreStore));    
-        
+    localStorage.setItem('initialStore', JSON.stringify(scoreStore));
+
     //add new th list items to the score card
     for (var i = 0; i < scoreStore.length; i++) {
         var scoreIndex = scoreStore[i];
-    
-        // var newRow = document.querySelector('tbody');
-        // var newData = tbody.createElement('th');
-        // var renderNewData = appendChild(newData);        
-        // renderNewData.children[0].textContent = scoreIndex;
-        
+
         var tr = table.insertRow(i);
         var tdInitials = tr.insertCell(0);
         tdInitials.textContent = scoreIndex.initials;
         var tdScore = tr.insertCell(1);
         tdScore.textContent = scoreIndex.score;
+    }
 
+    playerInitials.value = "";
 
-      } 
-      
-      playerInitials.value = "";
-
-        // renderScores();
-
-    
+    // renderScores();   
 
 });
-
-
-

@@ -11,7 +11,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
 
     <title>JavaScript Quiz</title>
 </head>
@@ -51,7 +51,7 @@
         <div id="questionBox" class="d-none mt-4">
             <h4 id="qNumber" class="text-uppercase pt-2">Question Number</h4>
             <h2 id="questionTitle">Question Text</h2>
-            <ol id="answers">
+            <ol id="answers" class="p-0">
                 <!-- List items go here -->
 
             </ol>
@@ -68,12 +68,12 @@
 
         <!-- End of quiz message -->
         <div id="endOfQuiz" class="d-none mt-4">
-            <div class="alert alert-primary" role="alert">
+            <div class="alert alert-success" role="alert">
                 <p>Thank you for playing!</p>
-                <h2>Your final score is: <span id="finalScore">0</span> points!</h2>
+                <h2>Your final score is: <span id="finalScore"></span> points!</h2>
             </div>
             <div id="scoreBoard">
-                <h4>To add you score to the leaderboard, please enter your initials:</h4>
+                <h4>To add your score to the leaderboard, please enter your initials:</h4>
                 <div class="form-inline">
                     <label for="playerInitials" class="ml-2">Initials: </label>
                     <input type="text" class="form-control ml-2" id="playerInitials" placeholder="ABC" maxlength="3">
